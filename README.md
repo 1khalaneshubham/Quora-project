@@ -11,9 +11,10 @@ It is a backend-driven project where the UI can be improved without changing bac
 ## 📸 Project Preview
 
 <p align="center">
-  <img src="./img1.PNG" alt="Project Preview" width="800"/>
+  <img src="https://raw.githubusercontent.com/1khalaneshubham/Quora-project/main/quora-project/img1.png" 
+       alt="Quora Project Preview" 
+       width="900" />
 </p>
-
 ---
 
 ## 🚀 Project Features
