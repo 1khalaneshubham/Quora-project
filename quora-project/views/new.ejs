@@ -1,0 +1,94 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create a New Post</title>
+</head>
+<body>
+    <form method="post" action="/posts">
+        <input placeholder="Enter Name" name="username" type="text"><br/><br/>
+        <textarea placeholder="Add Your Post" name="content"></textarea><br/><br/>
+        <button>Submit Post</button>
+    </form>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create New Post - Quora</title>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="form-container">
+            <h2><i class="fas fa-plus-circle"></i> Create New Post</h2>
+            
+            <form method="post" action="/posts">
+                <div class="form-group">
+                    <label for="username">
+                        <i class="fas fa-user"></i> Your Name
+                    </label>
+                    <input 
+                        type="text" 
+                        id="username" 
+                        name="username" 
+                        placeholder="Enter your name or username" 
+                        required
+                    >
+                </div>
+                
+                <div class="form-group">
+                    <label for="content">
+                        <i class="fas fa-edit"></i> Post Content
+                    </label>
+                    <textarea 
+                        id="content" 
+                        name="content" 
+                        placeholder="Share your thoughts, ask questions, or share knowledge..." 
+                        required
+                    ></textarea>
+                </div>
+                
+                <button type="submit" class="submit-btn">
+                    <i class="fas fa-paper-plane"></i> Publish Post
+                </button>
+            </form>
+            
+            <div style="text-align: center; margin-top: 20px;">
+                <a href="/posts" class="back-link">
+                    <i class="fas fa-arrow-left"></i> Back to Posts
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Character counter for textarea
+        const textarea = document.getElementById('content');
+        const counter = document.createElement('div');
+        counter.style.textAlign = 'right';
+        counter.style.marginTop = '5px';
+        counter.style.color = '#666';
+        counter.style.fontSize = '0.9rem';
+        textarea.parentNode.appendChild(counter);
+        
+        textarea.addEventListener('input', () => {
+            const length = textarea.value.length;
+            counter.textContent = `${length} characters`;
+            
+            if (length > 500) {
+                counter.style.color = '#ff416c';
+            } else if (length > 300) {
+                counter.style.color = '#ff9800';
+            } else {
+                counter.style.color = '#666';
+            }
+        });
+    </script>
+</body>
+</html>

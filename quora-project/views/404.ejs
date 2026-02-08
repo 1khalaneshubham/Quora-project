@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Not Found - Quora</title>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="form-container" style="text-align: center; padding: 60px 40px;">
+            <div style="font-size: 120px; color: #4a00e0; margin-bottom: 20px;">
+                <i class="fas fa-exclamation-circle"></i>
+            </div>
+            
+            <h2 style="color: #4a00e0; margin-bottom: 20px;">404 - Page Not Found</h2>
+            
+            <p style="color: #666; margin-bottom: 30px; font-size: 1.1rem;">
+                <%= message || "The page you are looking for doesn't exist or has been moved." %>
+            </p>
+            
+            <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+                <a href="/" class="action-btn view-btn">
+                    <i class="fas fa-home"></i> Go Home
+                </a>
+                <a href="/posts" class="action-btn edit-btn">
+                    <i class="fas fa-stream"></i> View Posts
+                </a>
+                <a href="/posts/new" class="create-btn" style="padding: 10px 25px;">
+                    <i class="fas fa-plus-circle"></i> Create Post
+                </a>
+            </div>
+            
+            <div style="margin-top: 40px; padding: 20px; background: #f8f9ff; border-radius: 10px;">
+                <h3 style="color: #4a00e0; margin-bottom: 15px;">
+                    <i class="fas fa-lightbulb"></i> Quick Links
+                </h3>
+                <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+                    <a href="/posts" style="color: #4a00e0; text-decoration: none;">
+                        <i class="fas fa-list"></i> All Posts
+                    </a>
+                    <a href="/posts/new" style="color: #4a00e0; text-decoration: none;">
+                        <i class="fas fa-plus"></i> New Post
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

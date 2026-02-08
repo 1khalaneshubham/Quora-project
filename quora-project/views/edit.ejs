@@ -1,0 +1,82 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Post</title>
+</head>
+<body>
+    <h2>Edit Post</h2>
+    <p>Post id:<%=post.id%></p>
+    <p>Post username:<%=post.username%></p>
+    <form method="post" action="/posts/<%=post.id%>?_method=PATCH">
+        <textarea name="content" rows="10" cols="35"><%= post.contant %></textarea>      
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Post - Quora</title>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="form-container">
+            <h2><i class="fas fa-edit"></i> Edit Post</h2>
+            
+            <div class="post-info" style="margin-bottom: 30px; padding: 20px; background: #f0f4ff; border-radius: 10px;">
+                <p><strong><i class="fas fa-user"></i> Author:</strong> <%= post.username %></p>
+                <p><strong><i class="fas fa-hashtag"></i> Post ID:</strong> <%= post.id %></p>
+            </div>
+            
+            <form method="post" action="/posts/<%= post.id %>?_method=PATCH">
+                <div class="form-group">
+                    <label for="content">
+                        <i class="fas fa-edit"></i> Edit Content
+                    </label>
+                    <textarea 
+                        id="content" 
+                        name="content" 
+                        rows="10" 
+                        required
+                        style="min-height: 250px;"
+                    ><%= post.contant %></textarea>
+                </div>
+                
+                <div style="display: flex; gap: 15px;">
+                    <button type="submit" class="submit-btn" style="flex: 1;">
+                        <i class="fas fa-save"></i> Update Post
+                    </button>
+                    <a href="/posts/<%= post.id %>" class="action-btn view-btn" style="flex: 1; text-align: center;">
+                        <i class="fas fa-times"></i> Cancel
+                    </a>
+                </div>
+            </form>
+            
+            <div style="text-align: center; margin-top: 20px;">
+                <a href="/posts" class="back-link">
+                    <i class="fas fa-arrow-left"></i> Back to All Posts
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Auto-expand textarea
+        const textarea = document.getElementById('content');
+        textarea.addEventListener('input', function() {
+            this.style.height = 'auto';
+            this.style.height = (this.scrollHeight) + 'px';
+        });
+        
+        // Initialize height
+        textarea.style.height = textarea.scrollHeight + 'px';
+    </script>
+</body>
+</html>

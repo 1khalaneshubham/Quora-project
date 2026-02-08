@@ -1,0 +1,119 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post in Detail</title>
+</head>
+<body>
+    <h2>Here is your post in detail:</h2>
+    <p>Post id: <%= post.id %> </p>
+    <div>
+    <h3 class="user">@<%= post.username %></h3>
+    <h4><%= post.contant %></h4>
+    </div>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= post.username %>'s Post - Quora</title>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="detail-container">
+            <a href="/posts" class="back-link">
+                <i class="fas fa-arrow-left"></i> Back to Posts
+            </a>
+            
+            <div class="post-id">
+                <i class="fas fa-hashtag"></i> Post ID: <%= post.id %>
+            </div>
+            
+            <div class="post-header" style="margin-bottom: 30px; text-align: center;">
+                <h2 style="color: #4a00e0; margin-bottom: 10px;">
+                    <i class="fas fa-user-circle"></i> <%= post.username %>
+                </h2>
+                <p style="color: #666; font-size: 0.9rem;">
+                    <i class="fas fa-calendar"></i> Posted just now
+                </p>
+            </div>
+            
+            <div class="detail-content">
+                <div style="font-size: 1.2rem; line-height: 1.8;">
+                    <%= post.contant %>
+                </div>
+            </div>
+            
+            <div class="post-actions" style="margin-top: 40px; justify-content: center;">
+                <a href="/posts/<%= post.id %>/edit" class="action-btn edit-btn">
+                    <i class="fas fa-edit"></i> Edit Post
+                </a>
+                <a href="/posts" class="action-btn view-btn">
+                    <i class="fas fa-stream"></i> View All Posts
+                </a>
+            </div>
+            
+            <div style="margin-top: 30px; padding: 20px; background: #f8f9ff; border-radius: 10px;">
+                <h3 style="color: #4a00e0; margin-bottom: 15px;">
+                    <i class="fas fa-info-circle"></i> Post Information
+                </h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+                    <div>
+                        <strong><i class="fas fa-user"></i> Author:</strong> <%= post.username %>
+                    </div>
+                    <div>
+                        <strong><i class="fas fa-id-card"></i> Post ID:</strong> <%= post.id %>
+                    </div>
+                    <div>
+                        <strong><i class="fas fa-file-alt"></i> Type:</strong> Public Post
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Add share functionality
+        const shareBtn = document.createElement('button');
+        shareBtn.innerHTML = '<i class="fas fa-share-alt"></i> Share Post';
+        shareBtn.style.cssText = `
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(45deg, #4a00e0, #8e2de2);
+            color: white;
+            border: none;
+            padding: 15px 25px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            z-index: 1000;
+        `;
+        
+        shareBtn.onclick = function() {
+            if (navigator.share) {
+                navigator.share({
+                    title: '<%= post.username %> on Quora',
+                    text: '<%= post.contant.substring(0, 100) %>...',
+                    url: window.location.href
+                });
+            } else {
+                navigator.clipboard.writeText(window.location.href);
+                alert('Post link copied to clipboard!');
+            }
+        };
+        
+        document.body.appendChild(shareBtn);
+    </script>
+</body>
+</html>
